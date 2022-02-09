@@ -4,9 +4,12 @@ title : "study docker basic"
 
 - docker 정보
     - docker info
+    - docker version
+    - docker ––version
 
 - hub에서 docker image 검색
     - docker seach {name}
+    - https://hub.docker.com/
 
 - bun에서 image pull
     - docker pull {image name}
@@ -21,20 +24,22 @@ title : "study docker basic"
 - 컨테이너 정보
     - docker ps
     - docker ps -a // all
+    - docker ps -q // show container id only
 
 - 컨테이너 정지
     - docker stop {name or id}
+    - docker stop $(docker ps -q) // stop all runnung containers
 
 - image로 컨테이너 생성하고 실행
     - docker run {image name}
     - docker run -d {image name} // background
-    - docker run --name {name} {image name} // run with container name
+    - docker run ––name {name} {image name} // run with container name
     - docker run -p {host port}:{container port} {image name} // publish container port
-        - ex) docker run --name ws -p 8080:80 httpd 
+        - ex) docker run &minus;&minus;name ws -p 8080:80 httpd 
         > httpd 이미지사용, 컨테이너 이름은 ws, 호스트의 8080포트로 컨테이너 80포트를 퍼블리시
     - docker run -v {host directory}:{container directory}
         > - 컨테이너의 디렉토리를 호스트의 디렉토리에 마운트
-        > - ex) docker run --name ws -p 8080:80 -v ~/test:/user/local/test httpd
+        > - ex) docker run &minus;&minus;name ws -p 8080:80 -v ~/test:/user/local/test httpd
         >   - 호스트의 ~/test 디렉토리는 컨터이너의 /user/local/test 의 디렉토리 역할을 하게 됨
 
 - 컨테이너 정지
@@ -51,7 +56,8 @@ title : "study docker basic"
 
 - 컨테이너 삭제
     - docker rm {name or id}
-    - docker rm --force {name of id} // force remove
+    - docker rm &minus;&minus;force {name of id} // force remove
+    - docker rm -f {name or id} // force remove same above
     - docker rm $(docker ps -a -q) // remove all stop containers
 
 - 컨테이너에 명령어 실행
