@@ -21,3 +21,25 @@ title : "docker make image"
             ```
     - build
         - docker build -t ubuntu:git-added
+
+- 허브 레포지토리 이용
+    - https://hub.docker.com/ 가입
+    - public repository 를 하나 생성
+    - 로컬 command 창에서 로그인
+        ```
+            docker login
+        ```
+        - 아이디, 패스워드 입력
+    - 이미지에 새로운 태그 생성
+        ```
+            docker tag ubuntu:latest {hub id}/{repository name}:{tag}
+        ```
+    - 새로운 태그로 만들어진 이미지 확인
+        ```
+            docker images
+        ```
+    - repository에 이미지를 push
+        ```
+            docker push {image name}:{tag}
+        ```
+    - https://hub.docker.com/ repositories에서 push된 이미지 확인
